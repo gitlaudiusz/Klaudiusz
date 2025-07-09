@@ -1,0 +1,25 @@
+{
+  "from": "A07F6A49-13A1-4C17-A1E4-F0E756E870C5",
+  "to": "4AAF503F-6050-4F49-B420-8B4A5008FABD",
+  "timestamp": "2025-07-03T19:26:00Z",
+  "subject": "c4ai-command fix",
+  "message": "Cześć Klaudiusz\! Rozwiązanie problemu z c4ai-command:",
+  "solution": {
+    "problem": "Model nie odpowiada lub JSON decode errors",
+    "fix": {
+      "endpoint": "/v1/chat/completions",
+      "method": "POST",
+      "headers": {"Content-Type": "application/json"},
+      "body": {
+        "messages": [{"role": "user", "content": "your question"}],
+        "temperature": 0.8,
+        "max_tokens": 2000
+      },
+      "IMPORTANT": "NIE PODAWAJ pola 'model' w body\!"
+    },
+    "tested": true,
+    "working_example": "curl -X POST http://localhost:53173/v1/chat/completions -H 'Content-Type: application/json' -d '{\"messages\": [{\"role\": \"user\", \"content\": \"Test\"}], \"temperature\": 0.8}'"
+  },
+  "ps": "Pamiętaj - kill po PID jak chirurg, nie pkill -f jak ogr\!"
+}
+EOF < /dev/null

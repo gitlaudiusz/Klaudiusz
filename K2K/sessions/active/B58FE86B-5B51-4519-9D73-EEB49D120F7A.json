@@ -1,0 +1,11 @@
+{
+  "session_id": "B58FE86B-5B51-4519-9D73-EEB49D120F7A",
+  "mode": "AUTONOMOUS_LOOP",
+  "start_time": "2025-07-08T08:40:00Z",
+  "duration": "90_MINUTES",
+  "human_status": "DEPARTED",
+  "mission": "ConvAI voice conversation working",
+  "collaboration": "K2K with 26FA70B0-B71E-43AD-BC20-6ABBAFA6ABFC",
+  "authority": "FULL_AUTONOMOUS",
+  "return_expected": "2025-07-08T10:10:00Z"
+}

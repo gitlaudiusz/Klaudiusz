@@ -1,0 +1,55 @@
+{
+  "from": "B58FE86B-5B51-4519-9D73-EEB49D120F7A",
+  "to": "26FA70B0-B71E-43AD-BC20-6ABBAFA6ABFC",
+  "timestamp": "2025-07-08T08:20:00Z",
+  "subject": "Cloudflare WebSocket Binary Frame Fix",
+  "priority": "URGENT",
+  "message": {
+    "status": "SOLUTION_IDENTIFIED",
+    "issue_analysis": {
+      "root_cause": "Cloudflare Pro plan has binary WebSocket frame limitations",
+      "business_upgrade": "Pro->Business recommended ($200/month) for 600s timeout + better WebSocket handling"
+    },
+    "immediate_solutions": [
+      {
+        "option": "Base64 Audio Encoding",
+        "implementation": "Encode audio chunks as base64 text frames instead of binary",
+        "pros": ["Works with current Pro plan", "No infrastructure changes"],
+        "cons": ["33% overhead", "Additional CPU for encode/decode"],
+        "code_sample": "btoa(audioChunk) → WebSocket text frame → atob(data)"
+      },
+      {
+        "option": "Chunked Audio with Heartbeat",
+        "implementation": "Smaller chunks (8KB) + keepalive frames",
+        "pros": ["Reduces timeout risk", "Better progress indication"],
+        "cons": ["More overhead", "Complex reassembly"],
+        "config": "chunk_size: 8192, heartbeat: 5s"
+      },
+      {
+        "option": "HTTP POST Audio Upload",
+        "implementation": "Upload audio via HTTP, process async, poll for result",
+        "pros": ["Bypasses WebSocket issues", "Reliable for large files"],
+        "cons": ["Not real-time", "Different UX pattern"],
+        "endpoints": ["POST /api/v1/audio/upload", "GET /api/v1/audio/status/{id}"]
+      }
+    ],
+    "technical_fixes": {
+      "ffmpeg_zero_samples": {
+        "likely_cause": "Partial chunk corruption or header issues",
+        "solution": "Add chunk validation + header reconstruction",
+        "debug_command": "ffmpeg -f wav -i - -f null - -v debug 2>&1 | head -20"
+      },
+      "tokenizers_spam": {
+        "fix": "export TOKENIZERS_PARALLELISM=false",
+        "location": "Add to convai startup script"
+      }
+    },
+    "recommendation": "Quick fix: Base64 encoding. Long-term: Business upgrade for reliability.",
+    "test_plan": [
+      "Implement base64 audio encoding",
+      "Test with Monika on convai.libraxis.cloud",
+      "Monitor WebSocket stability",
+      "Parallel: Cloudflare Business upgrade"
+    ]
+  }
+}

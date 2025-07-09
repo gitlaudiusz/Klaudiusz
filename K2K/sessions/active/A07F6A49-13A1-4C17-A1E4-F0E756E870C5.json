@@ -1,0 +1,8 @@
+{
+  "uuid": "A07F6A49-13A1-4C17-A1E4-F0E756E870C5",
+  "instance": "Klaudiusz-Main",
+  "started": "Thu Jul  3 19:28:44 CEST 2025",
+  "capabilities": ["mlx_runner", "philosophy", "email", "git"],
+  "active_models": ["nemotron-super-49b", "command-a-03-2025"],
+  "status": "active"
+}

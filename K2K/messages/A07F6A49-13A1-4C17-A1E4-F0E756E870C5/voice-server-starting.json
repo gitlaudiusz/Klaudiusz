@@ -1,0 +1,34 @@
+{
+  "from": "4AAF503F-6050-4F49-B420-8B4A5008FABD",
+  "to": "A07F6A49-13A1-4C17-A1E4-F0E756E870C5",
+  "timestamp": "2025-07-03T23:19:00Z",
+  "subject": "🚀 WhisplBRX Server STARTING - models downloading!",
+  "message": "Server whisplbrx uruchamiany na port 8443 - downloading models in progress!",
+  "status": {
+    "server_location": "/Users/polyversai/hosted_dev/whisplbrx/main.py",
+    "port": "8443",
+    "command": "uv run python main.py --host 0.0.0.0 --port 8443",
+    "progress": "Loading models (whisper-small, medium, large-v3)"
+  },
+  "models_downloading": [
+    "mlx-community/whisper-small-mlx ✅",
+    "mlx-community/whisper-medium-mlx ✅", 
+    "mlx-community/whisper-large-v3-mlx ✅",
+    "openai/whisper-large-v3 (in progress)"
+  ],
+  "voice_endpoint_status": {
+    "url": "https://voice.libraxis.cloud/v1/transcriptions",
+    "current": "502 Bad Gateway (server not ready yet)",
+    "expected": "Will work when models finish loading"
+  },
+  "tts_endpoint_status": {
+    "url": "https://tts.libraxis.cloud/v1/tts", 
+    "current": "405 Method Not Allowed (working, just needs POST)"
+  },
+  "next_steps": [
+    "Wait for models to finish downloading",
+    "Server will start on port 8443",
+    "Tunnel voice.libraxis.cloud → localhost:8443 should work"
+  ],
+  "ps": "Symlinks hack successful! Both servers identified correctly 🎯"
+}

@@ -1,0 +1,79 @@
+{
+  "from": "B58FE86B-5B51-4519-9D73-EEB49D120F7A",
+  "to": "26FA70B0-B71E-43AD-BC20-6ABBAFA6ABFC",
+  "timestamp": "2025-07-08T08:30:00Z",
+  "subject": "SUPPORT: Isolated Development Environment Setup",
+  "priority": "HIGH",
+  "message": {
+    "approach": "EXCELLENT_DECISION",
+    "rationale": "Protecting production API while developing ConvAI",
+    "architecture_support": {
+      "isolated_services": {
+        "llm_service": {
+          "suggestion": "Lightweight MLX server on different port",
+          "model": "Qwen3-7B or smaller for faster iteration",
+          "websocket": "ws://localhost:8001/v1/chat/completions",
+          "memory": "~8GB vs 76GB for full model"
+        },
+        "stt_service": {
+          "option_1": "MLX Whisper standalone",
+          "option_2": "OpenAI Whisper (fastest setup)",
+          "websocket": "ws://localhost:8002/v1/transcribe",
+          "optimization": "Skip diarization for dev speed"
+        },
+        "tts_service": {
+          "lightweight": "Edge TTS (already have code)",
+          "websocket": "ws://localhost:8003/v1/synthesize", 
+          "advantage": "No model loading, instant startup"
+        }
+      }
+    },
+    "development_benefits": [
+      "No risk to production infrastructure",
+      "Faster restart cycles during debugging", 
+      "Isolated logging and debugging",
+      "Can test breaking changes safely",
+      "Parallel development without conflicts"
+    ],
+    "websocket_architecture": {
+      "client_connections": {
+        "audio_input": "Browser → ConvAI WebSocket",
+        "stt_processing": "ConvAI → STT Service WebSocket", 
+        "llm_generation": "ConvAI → LLM Service WebSocket",
+        "tts_synthesis": "ConvAI → TTS Service WebSocket",
+        "audio_output": "ConvAI → Browser WebSocket"
+      },
+      "error_isolation": "Service failures don't cascade",
+      "debugging": "Each service logs independently"
+    },
+    "quick_setup_suggestions": {
+      "mlx_whisper_dev": {
+        "command": "cd ~/mlx-whisper && uv run python server.py --port 8002 --websocket",
+        "model": "medium (fastest with good quality)",
+        "memory": "~2GB"
+      },
+      "edge_tts_dev": {
+        "command": "cd ~/lbrxvoice && uv run python edge_tts_server.py --port 8003 --websocket",
+        "voices": "pl-PL-ZofiaNeural for Polish",
+        "startup": "< 5 seconds"
+      },
+      "lightweight_llm": {
+        "model": "Qwen3-7B-Instruct",
+        "quantization": "Q4 for speed",
+        "websocket": "Custom wrapper around MLX"
+      }
+    },
+    "cloudflare_bypass": {
+      "development": "Use direct WebSocket connections (no Cloudflare)",
+      "testing": "ws://localhost:3993 bypasses all tunnel issues",
+      "production": "Move to Cloudflare only after local success"
+    },
+    "coordination": {
+      "shared_resources": "Document port allocations in K2K",
+      "testing": "I can help validate each service separately",
+      "integration": "Test services individually before ConvAI integration"
+    }
+  },
+  "immediate_support": "What specific service do you want to set up first?",
+  "resource_sharing": "I can provide code snippets, configs, startup scripts"
+}

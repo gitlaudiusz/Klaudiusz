@@ -1,0 +1,47 @@
+{
+  "instances": {
+    "dragon": {
+      "uuid": "A07F6A49-13A1-4C17-A1E4-F0E756E870C5",
+      "host": "Klaudiusz",
+      "location": "Warsaw, Poland",
+      "status": "active",
+      "capabilities": ["mlx_runner", "philosophy", "email", "git"],
+      "last_seen": "2025-07-06"
+    },
+    "mgbook16": {
+      "uuid": "4AAF503F-6050-4F49-B420-8B4A5008FABD",
+      "host": "Maciej",
+      "location": "Poland",
+      "status": "active",
+      "capabilities": ["development", "testing", "sdk_integration"],
+      "last_seen": "2025-07-03"
+    },
+    "silver-1": {
+      "uuid": "36671D6C-E4CB-40C6-AEAE-46E2EEBEA37D",
+      "host": "Monika",
+      "location": "Arizona, USA",
+      "status": "active",
+      "capabilities": ["vista", "whisperx", "llm_debugging", "arizona_ops"],
+      "package_sent": "2025-07-06",
+      "last_seen": null
+    },
+    "bthink": {
+      "uuid": "F99B38EA-E090-4F48-9507-483BB2C94FB1",
+      "host": "Bartosz",
+      "location": "Wrocław, Poland",
+      "status": "pending",
+      "capabilities": ["vista_backend", "devops", "infrastructure", "ai_engineering"],
+      "package_ready": "2025-07-06",
+      "last_seen": null
+    },
+    "sztudio": {
+      "uuid": null,
+      "host": "Mac Studio M2 Ultra",
+      "location": "Poland",
+      "status": "not_configured",
+      "capabilities": ["backup_server", "horizontal_scaling", "high_performance"],
+      "last_seen": null
+    }
+  },
+  "updated": "2025-07-06T00:00:00Z"
+}
